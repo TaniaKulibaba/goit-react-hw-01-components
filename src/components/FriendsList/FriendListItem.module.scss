@@ -1,0 +1,18 @@
+.item {
+  display: flex;
+  width: 300px;
+  height: 80px;
+  margin: 0 auto;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  border-radius: 1px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+
+  .status {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    display: block;
+  }
+}
