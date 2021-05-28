@@ -7,28 +7,21 @@ function getRandomColor() {
     return Math.floor(Math.random() * 256);
   };
   return 'rgb(' + r() + ',' + r() + ',' + r() + ')';
-}
-
-const StatsListItem = ({ id, label, percentage }) => {
-    return (
-        <li key={id} className={styles.item} style={{backgroundColor: getRandomColor()}}>
-            <span className={styles.label}>{label}</span>
-            <span className={styles.percentage}>{percentage}%</span>
-        </li>
-
-    )
 };
 
-const StatsList = ({ items }) => {
-    return <ul className={styles.statsList}>{items.map(StatsListItem)}</ul>
-};
-
-const Statistics = ({ items }) => {
+const Statistics = ({ title, stats }) => {
     return (
         <section className={styles.statistics}>
-            <h2 className={styles.title}>Upload stats</h2>
+            {title ? <h2 className={styles.title}>{title}</h2> : null}
 
-            <StatsList items={items} />
+            <ul className={styles.statsList}>
+                {stats.map((stats) => (
+                    <li key={stats.id} className={styles.item} style={{backgroundColor: getRandomColor()}}>
+                        <span className={styles.label}>{stats.label}</span>
+                        <span className={styles.percentage}>{stats.percentage}%</span>
+                    </li>
+                ))}
+            </ul>
         </section>
     )
 };
@@ -39,7 +32,7 @@ Statistics.defaultProps = {
 
 Statistics.propTypes = {
     title: PropTypes.string,
-    items: PropTypes.arrayOf(
+    stats: PropTypes.arrayOf(
         PropTypes.shape({
             label: PropTypes.string.isRequired,
             percentage: PropTypes.number.isRequired,
